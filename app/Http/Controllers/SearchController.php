@@ -97,9 +97,9 @@ class SearchController extends Controller
 
             $project_approval = SystemConfiguration::where('type', 'project_approval')->first()->value;
             if ($project_approval == 1) {
-                $projects = Project::biddable()->notcancel()->open()->where('private', '0')->where('project_approval', 1)->where('name', 'like', '%' . $keyword . '%');
+                $projects = Project::biddable()->notcancel()->where('private', '0')->where('project_approval', 1)->where('name', 'like', '%' . $keyword . '%');
             } else {
-                $projects = Project::biddable()->notcancel()->open()->where('private', '0')->where('name', 'like', '%' . $keyword . '%');
+                $projects = Project::biddable()->notcancel()->where('private', '0')->where('name', 'like', '%' . $keyword . '%');
             }
 
             if ($category_id != null) {
